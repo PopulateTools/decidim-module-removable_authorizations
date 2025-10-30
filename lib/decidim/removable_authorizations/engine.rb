@@ -36,6 +36,10 @@ module Decidim
           Decidim::AdminLog::UserPresenter.class_eval do
             prepend Decidim::RemovableAuthorizations::AdminLog::UserPresenterOverrides
           end
+
+          Decidim::Admin::ImpersonationsController.include(
+            Decidim::RemovableAuthorizations::Admin::ImpersonationsControllerOverride
+          )
         end
       end
     end
