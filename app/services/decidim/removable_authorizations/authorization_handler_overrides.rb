@@ -14,7 +14,7 @@ module Decidim
       end
 
       def uniqueness
-        return true if unique_id.nil? || duplicate.blank?
+        return true if unique?
 
         errors.add(
           :base,
