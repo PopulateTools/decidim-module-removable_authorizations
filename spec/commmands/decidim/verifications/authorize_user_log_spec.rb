@@ -4,14 +4,15 @@ require "spec_helper"
 
 module Decidim::Verifications
   describe AuthorizeUser do
-    subject { described_class.new(handler) }
+    subject { described_class.new(handler, organization) }
 
-    let(:user) { create(:user, :confirmed) }
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, :confirmed, organization:) }
     let(:document_number) { "12345678X" }
     let(:handler) do
       DummyAuthorizationHandler.new(
-        document_number: document_number,
-        user: user
+        document_number:,
+        user:
       )
     end
 

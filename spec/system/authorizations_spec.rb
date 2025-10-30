@@ -37,8 +37,11 @@ describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_
         click_link "Example authorization"
 
         fill_in "Document number", with: document_number
-        page.execute_script("$('#authorization_handler_birthday').focus()")
-        page.find(".datepicker-dropdown .day", text: "12").click
+        within("div.datepicker__date-column") do
+          click_button "calendar-line"
+        end
+        page.find("tbody.sc-wc-datepicker td.sc-wc-datepicker", text: "12").click
+
         click_button "Send"
 
         expect(page).to have_content("There was a problem creating the authorization.")
@@ -65,8 +68,11 @@ describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_
         click_link "Example authorization"
 
         fill_in "Document number", with: document_number
-        page.execute_script("$('#authorization_handler_birthday').focus()")
-        page.find(".datepicker-dropdown .day", text: "12").click
+        within("div.datepicker__date-column") do
+          click_button "calendar-line"
+        end
+        page.find("tbody.sc-wc-datepicker td.sc-wc-datepicker", text: "12").click
+
         click_button "Send"
 
         expect(page).to have_content("There was a problem creating the authorization.")
