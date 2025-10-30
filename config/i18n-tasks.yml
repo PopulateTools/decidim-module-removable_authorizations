@@ -1,0 +1,11 @@
+---
+
+base_locale: en
+locales: [en]
+
+ignore_unused:
+  - "decidim.components.removable_authorizations.name"
+  - decidim.admin.menu.authorizations
+
+ignore_missing:
+  - decidim.participatory_processes.scopes.global

@@ -1,0 +1,41 @@
+---
+es:
+  decidim:
+    admin:
+      menu:
+        search_authorizations: Buscar autorizaciones
+    admin_log:
+      authorization:
+        delete: "%{user_name} eliminó una autorización de %{recipient_name}"
+      user:
+        create_authorization_error: "%{user_name} no ha podido autorizar su cuenta"
+        create_authorization_success: "%{user_name} ha autorizado su cuenta"
+    authorization_handlers:
+      errors:
+        duplicate:
+          managed_user_html: " <p>Ya se ha verificado un usuario con este documento
+            de identificación. Esta asociada a una cuenta administrada con nombre
+            %{name}.</p> <p>Ponte en contacto con un administrador para promocionar
+            la cuenta original y poder participar.</p> "
+          regular_user_html: " <p>Ya se ha verificado un usuario con este documento
+            de identificación. Esta asociada a la cuenta con correo-e %{email}.</p>
+            <p>Trata de hacer login con esa cuenta. Si no recuerdas la contraseña,
+            <a href='%{logout_link}'>haz logout</a> y pincha en recuperar contraseña
+            en la pantalla de iniciar sesión.</p> "
+    removable_authorizations:
+      admin:
+        authorizations:
+          delete:
+            not_found: No se han hallado autorizaciones asociadas a los datos introducidosNo
+              authorizations found for this verification data.
+            success: Autorización eliminada para los datos de verificación introducidos.
+          form:
+            authorization_method: Método de autorización
+          index:
+            granted_at: Concedido el
+            name: Nombre
+            nickname: Alias
+            no_results_found: No se han encontrado resultados
+            results: Resultados de la búsqueda
+            search: Buscar
+            title: Buscar autorización

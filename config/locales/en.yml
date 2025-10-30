@@ -1,0 +1,38 @@
+---
+en:
+  decidim:
+    admin:
+      menu:
+        search_authorizations: Search authorizations
+    admin_log:
+      authorization:
+        delete: "%{user_name} deleted an authorization of %{recipient_name}"
+      user:
+        create_authorization_error: "%{user_name} could not authorize his/her account"
+        create_authorization_success: "%{user_name} has authorized his/her account"
+    authorization_handlers:
+      errors:
+        duplicate:
+          managed_user_html: " <p>A user has already been verified with this identification
+            document. It is associated with a managed account with name %{name}.</p>
+            <p>Contact an administrator to promote the original account and participate.</p> "
+          regular_user_html: " <p>A user has already been verified with this identification
+            document. It is associated to the account with email %{email}.</p> <p>Try
+            to login with that account. If you do not remember the password, <a href='%{logout_link}'>logout</a>
+            and click on recover password on the login screen.</p> "
+    removable_authorizations:
+      admin:
+        authorizations:
+          delete:
+            not_found: No authorizations found for this verification data.
+            success: Authorization deleted for verification data.
+          form:
+            authorization_method: Authorization method
+          index:
+            granted_at: Granted at
+            name: Name
+            nickname: Nickname
+            no_results_found: No results found
+            results: Search Results
+            search: Search
+            title: Search authorization

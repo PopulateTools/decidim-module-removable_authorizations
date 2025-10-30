@@ -1,0 +1,67 @@
+<% add_decidim_page_title(t(".title")) %>
+
+<div class="item_show__header">
+  <h1 class="item_show__header-title">
+    <%= t(".title") %>
+  </h1>
+</div>
+
+<div class="item__edit item__edit-1col">
+  <div class="item__edit-form">
+    <%= decidim_form_for(@form, url: search_authorizations_path, html: { class: "form form-defaults delete_verifications" }) do |f| %>
+      <%= render partial: "form", object: f %>
+
+      <div class="item__edit-sticky">
+        <div class="item__edit-sticky-container">
+          <%= f.submit t(".search"), class: "button button__sm button__secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t("results", scope: "decidim.removable_authorizations.admin.authorizations.index") %>
+    </h2>
+  </div>
+  <div class="card-section">
+    <div class="table-scroll">
+      <table class="table-list">
+        <thead>
+          <tr>
+            <th>
+              <%= t("name", scope: "decidim.removable_authorizations.admin.authorizations.index") %>
+            </th>
+            <th>
+              <%= t("nickname", scope: "decidim.removable_authorizations.admin.authorizations.index") %>
+            </th>
+            <th>
+              <%= t("granted_at", scope: "decidim.removable_authorizations.admin.authorizations.index") %>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @authorization.present? %>
+            <tr>
+              <td>
+                <%= @authorization.user.name %>
+              </td>
+              <td>
+                <%= @authorization.user.nickname %>
+              </td>
+              <td>
+                <%= l @authorization.granted_at, format: :short %>
+              </td>
+              <td class="table-list__actions">
+                <%= icon_link_to "delete-bin-line", authorization_path(@encrypted_id), t("actions.destroy", scope: "decidim.admin"), class: "action-icon--remove", method: :delete, data: { confirm: t("actions.confirm_destroy", scope: "decidim.admin") } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

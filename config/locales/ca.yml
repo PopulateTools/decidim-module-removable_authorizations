@@ -1,0 +1,40 @@
+---
+ca:
+  decidim:
+    admin:
+      menu:
+        search_authorizations: Cercar autoritzations
+    admin_log:
+      authorization:
+        delete: "%{user_name} ha eliminat una autorització de %{recipient_name}"
+      user:
+        create_authorization_error: "%{user_name} no ha pogut autoritzar seu compte"
+        create_authorization_success: "%{user_name} ha autoritzat seu compte"
+    authorization_handlers:
+      errors:
+        duplicate:
+          managed_user_html: " <p>Ja s'ha verificat un usuari amb aquest document
+            d'identificació. Està associada a un compte administrat amb nom %{name}.</p>
+            <p>Posa't en contacte amb un administrador per promocionar el compte original
+            i poder participar.</p> "
+          regular_user_html: " <p>Ja s'ha verificat un usuari amb aquest document
+            d'identificació. Està associada al compte amb correu-e %{email}.</p> <p>Tracta
+            d'entrar com a usuari amb aquest compte. Si no recordes la contrasenya,
+            <a href='%{logout_link}'>fes logout</a> i punxa a recuperar contrasenya
+            a la pantalla d'iniciar sessió.</p> "
+    removable_authorizations:
+      admin:
+        authorizations:
+          delete:
+            not_found: No s'han trobat autoritzacions associades a les dades introduïdes.
+            success: Autorització eliminada per les dades de verificació introduïts.
+          form:
+            authorization_method: Mètode d'autorització
+          index:
+            granted_at: Concedit el
+            name: Nom
+            nickname: Àlies
+            no_results_found: No s'han trobat resultats
+            results: Resultats de la cerca
+            search: Cercar
+            title: Cercar autorització
