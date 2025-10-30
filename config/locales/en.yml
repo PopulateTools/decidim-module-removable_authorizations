@@ -29,8 +29,9 @@ en:
           form:
             authorization_method: Authorization method
           index:
+            destroy: Delete authorization
             granted_at: Granted at
-            name: Name
+            name: User name
             nickname: Nickname
             no_results_found: No results found
             results: Search Results

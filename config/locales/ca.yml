@@ -31,8 +31,9 @@ ca:
           form:
             authorization_method: Mètode d'autorització
           index:
-            granted_at: Concedit el
-            name: Nom
+            destroy: Esborrar autorització
+            granted_at: Concedida el
+            name: Nom de usuari
             nickname: Àlies
             no_results_found: No s'han trobat resultats
             results: Resultats de la cerca
