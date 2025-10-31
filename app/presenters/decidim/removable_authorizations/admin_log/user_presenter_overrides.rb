@@ -2,42 +2,49 @@ module Decidim
   module RemovableAuthorizations
     module AdminLog
       module UserPresenterOverrides
+        NEW_ACTIONS = %w(create_authorization_success create_authorization_error transfer_authorization)
+
+        private
+
         def action_string
           case action
-          when "grant_id_documents_offline_verification", "invite", "officialize", "remove_from_admin", "unofficialize", "create_authorization_success", "create_authorization_error"
+          when *NEW_ACTIONS
             "decidim.admin_log.user.#{action}"
           else
             super
           end
         end
 
-        def changeset
-          case action
-          when "create_authorization_success", "create_authorization_error"
-            original_changeset, fields_mapping = authorization_changeset
-          else
-            original_changeset = { badge: [previous_user_badge, user_badge] }
-            fields_mapping = { badge: :i18n }
-          end
-
-          Decidim::Log::DiffChangesetCalculator.new(
-            original_changeset,
-            fields_mapping,
-            i18n_labels_scope
-          ).changeset
+        def has_diff?
+          super || NEW_ACTIONS.include?(action.to_s)
         end
 
-        def i18n_labels_scope
+        def show_previous_value_in_diff?
+          super && NEW_ACTIONS.exclude?(action.to_s)
+        end
+
+        def changeset
           case action
-          when "create_authorization_success", "create_authorization_error"
-            "decidim.verifications.authorizations.error_log"
+          when *NEW_ACTIONS
+            original, fields = authorization_changeset
+            Decidim::Log::DiffChangesetCalculator.new(
+              original,
+              fields,
+              i18n_labels_scope
+            ).changeset
           else
+
             super
           end
         end
 
-        def has_diff?
-          %w(officialize unofficialize create_authorization_success create_authorization_error).include?(action)
+        def i18n_labels_scope
+          case action
+          when *NEW_ACTIONS
+            "decidim.authorization_handlers.log"
+          else
+            super
+          end
         end
 
         def authorization_changeset
@@ -51,10 +58,6 @@ module Decidim
           end]
 
           [original_changeset, fields_mapping]
-        end
-
-        def show_previous_value_in_diff?
-          super && %w(create_authorization_success create_authorization_error).exclude?(action)
         end
 
         def authorization_changeset_attribute_type(value)

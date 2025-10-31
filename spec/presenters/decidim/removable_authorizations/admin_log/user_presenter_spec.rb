@@ -31,7 +31,7 @@ describe Decidim::AdminLog::UserPresenter, type: :helper do
       it "shows the authorization details" do
         expect(subject.present).to match(%r{Harry Potter.*has authorized his\/her account})
 
-        expect(subject.present).to include("Handler name")
+        expect(subject.present).to include("Authorization name")
         expect(subject.present).to include(authorization_handler)
 
         expect(subject.present).to include("Document number")
@@ -47,7 +47,7 @@ describe Decidim::AdminLog::UserPresenter, type: :helper do
       it "shows the authorization details" do
         expect(subject.present).to match(%r{Harry Potter.*could not authorize his\/her account})
 
-        expect(subject.present).to include("Handler name")
+        expect(subject.present).to include("Authorization name")
         expect(subject.present).to include(authorization_handler)
 
         expect(subject.present).to include("Document number")

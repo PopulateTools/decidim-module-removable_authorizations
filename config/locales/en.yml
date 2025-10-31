@@ -11,6 +11,9 @@ en:
         create_authorization_error: "%{user_name} could not authorize his/her account"
         create_authorization_success: "%{user_name} has authorized his/her account"
     authorization_handlers:
+      log:
+        handler_name: Authorization name
+        document_number: Document number
       errors:
         duplicate:
           managed_user_html: " <p>A user has already been verified with this identification

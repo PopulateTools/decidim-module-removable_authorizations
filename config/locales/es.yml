@@ -11,6 +11,9 @@ es:
         create_authorization_error: "%{user_name} no ha podido autorizar su cuenta"
         create_authorization_success: "%{user_name} ha autorizado su cuenta"
     authorization_handlers:
+      log:
+        handler_name: Nombre de la autorización
+        document_number: Número de documento
       errors:
         duplicate:
           managed_user_html: " <p>Ya se ha verificado un usuario con este documento
