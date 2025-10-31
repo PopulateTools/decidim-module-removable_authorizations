@@ -31,7 +31,7 @@ module Decidim
         end
 
         def recipient_presenter
-          @recipient_presenter ||= Decidim::Log::UserPresenter.new(recipient, h, user_data) if recipient_data
+          @recipient_presenter ||= Decidim::Log::UserPresenter.new(recipient, h, recipient_attributes || user_data)
         end
 
         # {"extra"=>{"authorization_owner"=>{"id"=>9999}}
@@ -46,6 +46,12 @@ module Decidim
 
         def recipient
           Decidim::User.find_by(id: recipient_data["id"]) if recipient_data
+        end
+
+        def recipient_attributes
+          return if recipient.blank?
+
+          { "name" => recipient.name, "nickname" => recipient.nickname }
         end
       end
     end
