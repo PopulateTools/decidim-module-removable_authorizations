@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Decidim
   module RemovableAuthorizations
     module AuthorizationHandlerOverrides
@@ -51,7 +53,7 @@ module Decidim
       # Can be overriden to customize the attributes, the level of obfuscation,
       # or the information logged for success/error.
       def log_entry_extras
-        extras = { handler_name: handler_name }
+        extras = { handler_name: }
 
         attributes.except(:user, :handler_name).each do |k, v|
           extras[k] = Decidim::RemovableAuthorizations::AttributeObfuscator.secret_attribute_hint(v)

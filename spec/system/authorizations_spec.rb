@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_authorization_handler"] do
+describe "Authorizations", with_authorization_workflows: ["dummy_authorization_handler"] do
   before do
     switch_to_host(organization.host)
   end
@@ -11,7 +11,7 @@ describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_
 
   context "when existing user from her account" do
     let(:organization) { create :organization, available_authorizations: authorizations }
-    let(:user) { create(:user, :confirmed, organization: organization) }
+    let(:user) { create(:user, :confirmed, organization:) }
 
     before do
       login_as user, scope: :user
@@ -20,7 +20,7 @@ describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_
 
     context "when another user is already authorized with the same data" do
       let(:authorizations) { ["dummy_authorization_handler"] }
-      let(:first_user) { create(:user, :confirmed, organization: organization) }
+      let(:first_user) { create(:user, :confirmed, organization:) }
       let!(:first_authorization) { create(:authorization, user: first_user, unique_id: document_number, name: "dummy_authorization_handler") }
 
       before do
@@ -51,7 +51,7 @@ describe "Authorizations", type: :system, with_authorization_workflows: ["dummy_
 
     context "when a managed user is already authorized with the same data" do
       let(:authorizations) { ["dummy_authorization_handler"] }
-      let(:first_user) { create(:user, :confirmed, organization: organization, managed: true) }
+      let(:first_user) { create(:user, :confirmed, organization:, managed: true) }
       let!(:first_authorization) { create(:authorization, user: first_user, unique_id: document_number, name: "dummy_authorization_handler") }
 
       before do

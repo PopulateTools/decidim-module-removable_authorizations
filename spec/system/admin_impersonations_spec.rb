@@ -2,9 +2,9 @@
 
 require "spec_helper"
 
-describe "Admin manages impersonations", type: :system, with_authorization_workflows: ["dummy_authorization_handler"] do
+describe "Admin manages impersonations", with_authorization_workflows: ["dummy_authorization_handler"] do
   let(:organization) { create(:organization, available_authorizations: ["dummy_authorization_handler"]) }
-  let(:admin) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:admin) { create(:user, :admin, :confirmed, organization:) }
   let(:document_number) { "123456789X" }
   let(:birthday) { "12" }
 
@@ -20,7 +20,7 @@ describe "Admin manages impersonations", type: :system, with_authorization_workf
 
   context "when trying to impersonate a new user with existing authorization data" do
     context "when the existing user is a managed user" do
-      let(:existing_user) { create(:user, :confirmed, organization: organization, managed: true, name: "Managed User Name") }
+      let(:existing_user) { create(:user, :confirmed, organization:, managed: true, name: "Managed User Name") }
       let!(:existing_authorization) do
         create(:authorization, user: existing_user, unique_id: document_number, name: "dummy_authorization_handler")
       end
@@ -47,7 +47,7 @@ describe "Admin manages impersonations", type: :system, with_authorization_workf
         # rubocop:enable RSpec/AnyInstance
       end
 
-      let(:existing_user) { create(:user, :confirmed, organization: organization, managed: true, name: "Managed User Name") }
+      let(:existing_user) { create(:user, :confirmed, organization:, managed: true, name: "Managed User Name") }
       let!(:existing_authorization) do
         create(:authorization, user: existing_user, unique_id: document_number, name: "dummy_authorization_handler")
       end
@@ -68,7 +68,7 @@ describe "Admin manages impersonations", type: :system, with_authorization_workf
     end
 
     context "when the existing user is a regular user" do
-      let(:existing_user) { create(:user, :confirmed, organization: organization, email: "existing@example.com") }
+      let(:existing_user) { create(:user, :confirmed, organization:, email: "existing@example.com") }
       let!(:existing_authorization) do
         create(:authorization, user: existing_user, unique_id: document_number, name: "dummy_authorization_handler")
       end

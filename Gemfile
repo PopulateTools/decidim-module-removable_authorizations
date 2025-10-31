@@ -11,10 +11,10 @@ DECIDIM_VERSION = Decidim::RemovableAuthorizations::DECIDIM_VERSION
 gem "decidim", DECIDIM_VERSION
 gem "decidim-removable_authorizations", path: "."
 
-gem "puma", ">= 6.3.1"
 gem "bootsnap", "~> 1.4"
-gem "uglifier", "~> 4.1"
 gem "deface"
+gem "puma", ">= 6.3.1"
+gem "uglifier", "~> 4.1"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

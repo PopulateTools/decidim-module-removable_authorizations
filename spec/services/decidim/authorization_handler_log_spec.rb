@@ -5,9 +5,9 @@ require "spec_helper"
 module Decidim
   describe AuthorizationHandler do
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, organization: organization) }
+    let(:user) { create(:user, organization:) }
     let(:handler) { described_class.new(params) }
-    let(:params) { { user: user, organization: organization } }
+    let(:params) { { user:, organization: } }
     let(:action_log) { ActionLog.last }
 
     describe "log_successful_authorization" do
