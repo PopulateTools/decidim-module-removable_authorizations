@@ -10,6 +10,7 @@ es:
       user:
         create_authorization_error: "%{user_name} no ha podido autorizar su cuenta"
         create_authorization_success: "%{user_name} ha autorizado su cuenta"
+        transfer_authorization: "Se ha encontrado una autorización transferible para %{user_name}"
     authorization_handlers:
       log:
         handler_name: Nombre de la autorización

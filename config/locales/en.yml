@@ -10,6 +10,7 @@ en:
       user:
         create_authorization_error: "%{user_name} could not authorize his/her account"
         create_authorization_success: "%{user_name} has authorized his/her account"
+        transfer_authorization: "A transferable authorization has been found for %{user_name}"
     authorization_handlers:
       log:
         handler_name: Authorization name

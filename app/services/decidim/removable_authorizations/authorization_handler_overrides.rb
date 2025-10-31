@@ -13,6 +13,10 @@ module Decidim
         log_authorization("create_authorization_error", log_error_entry_extras)
       end
 
+      def log_transfer_authorization
+        log_authorization("transfer_authorization", log_entry_extras)
+      end
+
       def uniqueness
         return true if unique?
 

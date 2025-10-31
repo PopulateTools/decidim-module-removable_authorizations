@@ -10,6 +10,7 @@ ca:
       user:
         create_authorization_error: "%{user_name} no ha pogut autoritzar seu compte"
         create_authorization_success: "%{user_name} ha autoritzat seu compte"
+        transfer_authorization: "S'ha trobat una autorització transferible per a %{user_name}"
     authorization_handlers:
       log:
         handler_name: Nom de l'autorització
