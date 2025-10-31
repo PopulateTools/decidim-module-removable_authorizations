@@ -30,19 +30,19 @@ describe "Authorizations", with_authorization_workflows: ["dummy_authorization_h
 
       it "displays a verbose error message" do
         within_user_menu do
-          click_link "My account"
+          click_on "My account"
         end
 
-        click_link "Authorizations"
-        click_link "Example authorization"
+        click_on "Authorizations"
+        click_on "Example authorization"
 
         fill_in "Document number", with: document_number
         within("div.datepicker__date-column") do
-          click_button "calendar-line"
+          click_on "calendar-line"
         end
         page.find("tbody.sc-wc-datepicker td.sc-wc-datepicker", text: "12").click
 
-        click_button "Send"
+        click_on "Send"
 
         expect(page).to have_content("There was a problem creating the authorization.")
         expect(page).to have_content("Try to login with that account")
@@ -61,19 +61,19 @@ describe "Authorizations", with_authorization_workflows: ["dummy_authorization_h
 
       it "displays a verbose error message" do
         within_user_menu do
-          click_link "My account"
+          click_on "My account"
         end
 
-        click_link "Authorizations"
-        click_link "Example authorization"
+        click_on "Authorizations"
+        click_on "Example authorization"
 
         fill_in "Document number", with: document_number
         within("div.datepicker__date-column") do
-          click_button "calendar-line"
+          click_on "calendar-line"
         end
         page.find("tbody.sc-wc-datepicker td.sc-wc-datepicker", text: "12").click
 
-        click_button "Send"
+        click_on "Send"
 
         expect(page).to have_content("There was a problem creating the authorization.")
         expect(page).to have_content("It is associated with a managed accoun")
