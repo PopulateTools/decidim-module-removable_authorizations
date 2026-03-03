@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    decidim-removable_authorizations (0.29.0)
-      decidim-core (~> 0.29.0)
+    decidim-removable_authorizations (0.30.0)
+      decidim-core (>= 0.29, < 0.31)
 
 GEM
   remote: https://rubygems.org/
@@ -817,8 +817,8 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (~> 1.4)
   byebug (~> 11.0)
-  decidim (~> 0.29.0)
-  decidim-dev (~> 0.29.0)
+  decidim (>= 0.29, < 0.31)
+  decidim-dev (>= 0.29, < 0.31)
   decidim-removable_authorizations!
   deface
   faker (~> 3.2)
