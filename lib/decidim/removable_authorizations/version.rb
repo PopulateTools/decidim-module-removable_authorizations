@@ -4,6 +4,6 @@ module Decidim
   # This holds the decidim-meetings version.
   module RemovableAuthorizations
     VERSION = "0.30.0"
-    DECIDIM_VERSION = ">= 0.29", "< 0.31"
+    DECIDIM_VERSION = "~> 0.30.0"
   end
 end
